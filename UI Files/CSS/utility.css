@@ -1,0 +1,15 @@
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.color {
+    background-color: #0C1622;;
+}
