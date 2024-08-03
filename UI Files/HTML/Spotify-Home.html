@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Clone</title>
 
-    <link rel="stylesheet" href="../CSS/UI.css">
+    <link rel="stylesheet" href="../CSS/navigation.css">
     <link rel="stylesheet" href="../CSS/utility.css">
+    <link rel="stylesheet" href="../CSS/songs-container.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 </head>
 <body>
 
@@ -19,17 +21,73 @@
                 <div class="header flex">
                     <img src="../Images/full-logo-image.png" alt="" class="logo-image">
                 </div>
-                <div class="icon flex">
-                    <i class="fa fa-home" aria-hidden="true"></i>
-                    <span>Home</span>
-                </div>
+
                 <div class="icon flex">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span>Search</span>
                 </div>
+                <div class="icon flex">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <span>Home</span>
+                </div>
             </div>
 
             <div class="library color">
+                <div class="library-header flex spacea align-center">
+                    <span class="library-logo-div flex align-center">
+                        <span class="library-logo">
+                            <i class="fa fa-book" aria-hidden="true"></i>
+                        </span>
+                        Your Library
+                    </span>
+                    <span class="plus-icon">
+                        +
+                    </span>
+                </div>
+
+                <div class="your-library-contents">
+
+                    <div class="create-playlist flex column spacea">
+
+                        <div class="playlist-heading">
+                            Create Your First Playlist
+                        </div>
+                        
+                        <div class="playlist-suggestion">
+                            It's easy, we'll help you.
+                        </div>
+
+                        <div class="playlist-button">
+                            <button>Create Playlist</button>
+                        </div>
+
+                    </div>
+
+                    <div class="search-podcast flex column spacea">
+
+                        <div class="podcast-heading">
+                            Let's find some podcasts to follow
+                        </div>
+                        
+                        <div class="podcast-suggestion">
+                            We'll keep you updated on new Episodes
+                        </div>
+
+                        <div class="podcast-button">
+                            <button>Browse Podcasts</button>
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="t-and-c">
+
+                </div>
+
+                <div class="language">
+                    <!-- <i class="fi fi-rr-globe"></i> -->
+                </div>
 
             </div>
 

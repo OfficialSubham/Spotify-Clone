@@ -13,3 +13,11 @@
 .color {
     background-color: #0C1622;;
 }
+
+.space {
+    justify-content: space-between;
+}
+
+.spacea {
+    justify-content: space-around;
+}
