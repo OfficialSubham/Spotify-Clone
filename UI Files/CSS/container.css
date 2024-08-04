@@ -1,0 +1,127 @@
+.page-container .container {
+    width: calc(100% - 280px);
+    border-radius: 10px;
+    overflow-y: scroll;
+    height: 100%;
+    padding: 10px;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+.songs-container {
+    height: 2000px;
+}
+
+.container .header {
+    background-color: #0000005e;
+    width: 100%;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(5px);
+    padding: 0px 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: sticky;
+}
+
+.header .back {
+    height: 30px;
+    width: 30px;
+    font-size: 1.5em;
+    font-weight: 600;
+    background-color: #ffffff;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    color: #000;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.header div:last-child {
+    margin: 0;
+}
+
+.header .header-search {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.all-header {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    font-size: 0.7em;
+    margin-bottom: 20px;
+    height: 20px;
+}
+
+.all-header div:first-child{
+    font-size: 1.6em;
+}
+.all-header div {
+    cursor: pointer;
+}
+
+.all-header div:hover {
+    text-decoration: underline;
+}
+
+.songs-container .creators {
+    width: 100%;
+    height: 200px;
+}
+
+.creators .artists {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+    column-gap: 5px;
+}
+
+.artists .artist {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 100%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.15s;
+}
+
+.artist:hover {
+    background-color: #ffffff15;
+}
+
+.artists .artist .artist-picture{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #0C1622;
+    margin: 0 auto;
+}
+
+.artist .name {
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.artist .passion {
+    font-size: 0.7em;
+}
+
+.artist:last-child {
+    margin-right: 0;
+}
+
+.artist-picture .artist-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
