@@ -21,7 +21,7 @@ body {
     width: 100%;
     height: 100%;
     padding: 10px;
-    color: #98d6bd;
+    color: #fff;
 }
 
 .page-container .left-contents {
@@ -94,7 +94,7 @@ body {
 }
 
 .library-logo-div:hover, .library-logo:hover {
-    color: #c1f8e2;
+    color: #d8d8d8;
 }
 
 .library-logo-div .library-logo {
@@ -126,6 +126,7 @@ body {
     background-color: #0C1622;
     overflow-y: scroll;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .your-library-contents::-webkit-scrollbar{
@@ -175,4 +176,40 @@ body {
 
 .create-playlist .playlist-button button:hover, .search-podcast .podcast-button button:hover {
     padding: 16px;
+}
+
+.left-contents .t-and-c {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.t-and-c div {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.t-and-c div span {
+    cursor: pointer;
+}
+
+.t-and-c div:last-child span:hover {
+    text-decoration: underline;
+}
+
+.left-contents .language button {
+    margin-left: 20px;
+    border: 3px solid #23444b;
+    background-color: transparent;
+    padding: 12px 20px;
+    border-radius: 30px;
+    color: #fff;
+    transition: all 0.20s;
+    font-weight: 600;
+}
+
+.language button:hover {
+    background-color: #fff;
+    color: #000;
 }
