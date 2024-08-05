@@ -160,13 +160,73 @@
     backdrop-filter: blur(10px);
     align-items: baseline;
     position: absolute;
-    bottom: 12px;
+    bottom: 20px;
     left: 10px;
     right: 10px;
     border-radius: 10px;
-    padding: 0 20px;
+    padding: 0 30px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 20px;
+    margin: 0 10px;
+    transition: all 0.15s;
+}
+
+.player .seekbar {
+    height: 5px;
+    border-radius: 10px;
+    background-color: #ffb6b6;
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+
+}
+
+.player .seeker {
+    height: 15px;
+    width: 15px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+}
+
+.player .song-name {
+    width: 250px;
+    height: 30px;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    word-wrap: break-word;
+    line-height: 15px;
+    font-size: 0.7em;
+}
+
+.player .player-button {
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5em;
+    top: 5px;
+}
+
+.player-button div {
+    width: 25px;
+}
+
+.player .song-timer {
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5em;
+    top: 5px;
+    right: 20px;
 }
