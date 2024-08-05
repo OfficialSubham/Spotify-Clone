@@ -4,6 +4,7 @@
     overflow-y: scroll;
     height: 100%;
     padding: 10px;
+    transition: all 0.01s;
 }
 
 .container::-webkit-scrollbar {
@@ -69,12 +70,19 @@
     text-decoration: underline;
 }
 
-.songs-container .creators {
+.songs-container .creators{
     width: 100%;
     height: 200px;
+    margin-bottom: 40px;
 }
 
-.creators .artists {
+.songs-container .popular-albums {
+    width: 100%;
+    height: 280px;
+    margin-bottom: 40px;
+}
+
+.creators .artists, .popular-albums .cards {
     width: 100%;
     height: calc(100% - 40px);
     display: grid;
@@ -82,7 +90,7 @@
     column-gap: 5px;
 }
 
-.artists .artist {
+.artists .artist, .cards .each-card {
     display: flex;
     flex-direction: column;
     width: 150px;
@@ -93,7 +101,7 @@
     transition: all 0.15s;
 }
 
-.artist:hover {
+.artist:hover, .each-card:hover {
     background-color: #ffffff15;
 }
 
@@ -105,14 +113,23 @@
     margin: 0 auto;
 }
 
-.artist .name {
+.each-card .card-picture {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+
+.artist .name, .each-card .card-name {
     display: flex;
     justify-content: flex-start;
     margin: 5px 0;
     font-weight: 500;
 }
 
-.artist .passion {
+.artist .passion, .each-card .description {
     font-size: 0.7em;
 }
 
@@ -120,8 +137,12 @@
     margin-right: 0;
 }
 
-.artist-picture .artist-image {
+.artist-picture .artist-image, .card-picture .album-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.page-container .album-container {
+    width: 100%;
 }
