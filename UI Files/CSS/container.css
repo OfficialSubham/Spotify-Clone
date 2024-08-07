@@ -1,31 +1,72 @@
 .page-container .container {
     width: calc(100% - 280px);
     border-radius: 10px;
-    overflow-y: scroll;
-    height: 100%;
+    height: auto;
     padding: 10px;
-    transition: all 0.01s;
+    transition: all 0.15s;
+    overflow-y: auto;
+    padding-top: 100px;
+}
+
+#subham {
+    display: none;
+    position: absolute;
+    font-size: 1.2em;
+    top: 40px;
+    left: 15px;
+    font-weight: 700;
+    background-color: #0000005e;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 5px;
+    flex-shrink: 0;
 }
 
 .container::-webkit-scrollbar {
     display: none;
 }
-.songs-container {
-    height: 2000px;
+
+.page-container .album-container {
+    border-radius: 10px;
+    padding: 0 10px;
 }
 
-.container .header, .album-container .header {
+.album-container .songs-container {
+    padding: 100px 0;
+    overflow-y: scroll;
+    height: auto;
+}
+
+.songs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.container .header {
     background-color: #0000005e;
-    width: 100%;
     height: 60px;
-    position: sticky;
-    top: 0;
+    position: absolute;
+    top: 20px;
     backdrop-filter: blur(5px);
     padding: 0px 30px;
     border-radius: 10px;
-    margin-bottom: 30px;
     flex-shrink: 0;
+    right: 20px;
+    left: 310px;
 }
+
+.album-container .header {
+    background-color: #0000005e;
+    height: 60px;
+    position: absolute;
+    top: 20px;
+    backdrop-filter: blur(5px);
+    padding: 0px 30px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    right: 20px;
+    left: 20px
+}
+
 
 .header .back {
     height: 30px;
@@ -72,13 +113,13 @@
 
 .songs-container .creators{
     width: 100%;
-    height: 200px;
+    height: auto;
     margin-bottom: 40px;
 }
 
 .songs-container .popular-albums {
     width: 100%;
-    height: 280px;
+    height: auto;
     margin-bottom: 40px;
 }
 
@@ -88,6 +129,261 @@
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto auto;
     column-gap: 5px;
+    flex-shrink: 0;
+}
+
+.popular-albums .cards {
+    height: auto;
+}
+
+
+@media (min-width: 1601px) {
+    .creators .artists, .popular-albums .cards {
+        grid-template-columns: auto auto auto auto auto auto auto auto auto;
+
+    }
+    .container .hamburger, .album-container .hamburger {
+        display: none;
+    }
+}
+
+
+
+@media (min-width: 1540px) and (max-width: 1600px) {
+    .creators .artists, .popular-albums .cards {
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+
+    }
+    .container .hamburger, .album-container .hamburger {
+        display: none;
+    }
+}
+
+
+@media (min-width: 1400px) and (max-width: 1539px) {
+    .creators .artists, .popular-albums .cards {
+
+        grid-template-columns: auto auto auto auto auto auto auto;
+
+    }
+    .container .hamburger, .album-container .hamburger {
+        display: none;
+    }
+}
+
+
+@media (min-width: 1243px) and (max-width: 1399px) {
+    .creators .artists, .popular-albums .cards {
+ 
+        grid-template-columns: auto auto auto auto auto auto;
+
+    }
+    .container .hamburger, .album-container .hamburger {
+        display: none;
+    }
+}
+
+@media (min-width: 1090px) and (max-width: 1242px) {
+    .creators .artists, .popular-albums .cards {
+
+        grid-template-columns: auto auto auto auto auto;
+
+    }
+    .container .hamburger, .album-container .hamburger {
+        display: none;
+    }
+}
+
+@media (min-width: 950px) and (max-width: 1089px) {
+    .creators .artists, .popular-albums .cards {
+        grid-template-columns: auto auto auto auto auto;
+    }
+    .page-container .container {
+        width: 100%;
+    }
+    .page-container .left-contents {
+        display: none;
+    }
+    .container .header, .album-container .header {
+        background-color: #0000005e;
+        width: calc(100% - 100px);
+        height: 60px;
+        position: absolute;
+        top: 20px;
+        backdrop-filter: blur(5px);
+        padding: 0px 30px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        left: 18px;
+    }
+    .container .hamburger, .album-container .hamburger {
+        opacity: 1;
+    }
+}
+
+
+@media (min-width: 800px) and (max-width: 949px) {
+    .creators .artists, .popular-albums .cards {
+        grid-template-columns: auto auto auto auto;
+    }
+    .page-container .container {
+        width: 100%;
+    }
+    .page-container .left-contents {
+        display: none;
+    }
+    .container .header, .album-container .header {
+        background-color: #0000005e;
+        width: calc(100% - 100px);
+        height: 60px;
+        position: absolute;
+        top: 20px;
+        backdrop-filter: blur(5px);
+        padding: 0px 30px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        left: 18px;
+    }
+    .container .hamburger, .album-container .hamburger {
+        opacity: 1;
+    }
+}
+
+
+@media (min-width: 650px) and (max-width: 799px) {
+    .creators .artists, .popular-albums .cards {
+        grid-template-columns: auto auto auto auto;
+    }
+    .page-container .container {
+        width: 100%;
+    }
+    .page-container .left-contents {
+        display: none;
+    }
+    .container .header, .album-container .header {
+        background-color: #0000005e;
+        width: calc(100% - 100px);
+        height: 60px;
+        position: absolute;
+        top: 20px;
+        backdrop-filter: blur(5px);
+        padding: 0px 30px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        left: 18px;
+    }
+    .container .hamburger, .album-container .hamburger {
+        opacity: 1;
+    }
+}
+
+
+@media (min-width: 500px) and (max-width: 649px) {
+    .creators .artists, .popular-albums .cards {
+        grid-template-columns: auto auto auto;
+    }
+    .page-container .container {
+        width: 100%;
+    }
+    .page-container .left-contents {
+        display: none;
+    }
+    .container .header, .album-container .header {
+        background-color: #0000005e;
+        width: calc(100% - 100px);
+        height: 60px;
+        position: absolute;
+        top: 20px;
+        backdrop-filter: blur(5px);
+        padding: 0px 30px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        left: 18px;
+    }
+
+    .container .hamburger, .album-container .hamburger {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 499px) {
+    .creators .artists, .popular-albums .cards {
+        grid-template-columns: auto auto;
+    }
+    .page-container .container {
+        width: 100%;
+    }
+    .page-container .left-contents {
+        display: none;
+    }
+    .container .header, .album-container .header {
+        background-color: #0000005e;
+        width: calc(100% - 100px);
+        height: 60px;
+        position: absolute;
+        top: 20px;
+        backdrop-filter: blur(5px);
+        padding: 0px 30px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        left: 18px;
+    }
+
+    .container .hamburger, .album-container .hamburger {
+        opacity: 1;
+    }
+
+}
+
+
+
+@media (min-width: 0px) and (max-width: 399px) {
+    .creators .artists, .popular-albums .cards {
+        grid-template-columns: auto auto;
+    }
+    .page-container .container {
+        width: 100%;
+        height: auto;
+    }
+    .page-container .left-contents {
+        display: none;
+    }
+    .container .header, .album-container .header {
+        background-color: #0000005e;
+        width: calc(100% - 100px);
+        height: 60px;
+        position: absolute;
+        top: 20px;
+        backdrop-filter: blur(5px);
+        padding: 0px 30px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        left: 18px;
+        z-index: 100;
+    }
+
+    .container .hamburger, .album-container .hamburger {
+        visibility: visible;
+    }
+
+}
+
+
+
+.container .hamburger, .album-container .hamburger {
+    background-color: #0000005e;
+    padding: 18px;
+    position: absolute;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    flex-shrink: 0;
+    font-size: 1.5em;
+    font-weight: 700;
+    cursor: pointer;
+    top: 20px;
+    right: 18px;
+    z-index: 100;
 }
 
 .artists .artist, .cards .each-card {
@@ -99,6 +395,18 @@
     cursor: pointer;
     border-radius: 10px;
     transition: all 0.15s;
+}
+
+.container .hamburger-menu, .album-container .hamburger-menu {
+    width: 210px;
+    background-color: #23444b;
+    border-radius: 10px;
+    border: 2px solid #000;
+    position: absolute;
+    right: 10px;
+    display: none;
+    top: 10px;
+    bottom: 0px;
 }
 
 .artist:hover, .each-card:hover {

@@ -31,25 +31,25 @@ async function main() {
     console.log(song[0]);
     currentTrack.src = song[1]
     let songName = songNameGiver(currentTrack.src)
-    document.querySelector(".js-song-name")
-        .innerText = songName
-    document.querySelector(".js-play-pause-button")
-        .addEventListener("click", () => {
-            if(currentTrack.paused) {
-                currentTrack.play();
-                document.querySelector(".js-play-pause-button")
-                    .classList.remove("fa-play")
-                document.querySelector(".js-play-pause-button")
-                    .classList.add("fa-pause")
-            }
-            else {
-                currentTrack.pause();
-                document.querySelector(".js-play-pause-button")
-                    .classList.remove("fa-pause")
-                document.querySelector(".js-play-pause-button")
-                    .classList.add("fa-play")
-            }
-        })
+    // document.querySelector(".js-song-name")
+    //     .innerText = songName
+    // document.querySelector(".js-play-pause-button")
+    //     .addEventListener("click", () => {
+    //         if(currentTrack.paused) {
+    //             currentTrack.play();
+    //             document.querySelector(".js-play-pause-button")
+    //                 .classList.remove("fa-play")
+    //             document.querySelector(".js-play-pause-button")
+    //                 .classList.add("fa-pause")
+    //         }
+    //         else {
+    //             currentTrack.pause();
+    //             document.querySelector(".js-play-pause-button")
+    //                 .classList.remove("fa-pause")
+    //             document.querySelector(".js-play-pause-button")
+    //                 .classList.add("fa-play")
+    //         }
+    //     })
 }
 
 function songNameGiver(song) {
@@ -58,3 +58,34 @@ function songNameGiver(song) {
     let newName = name.replaceAll(/[%20, %2, (), _, .mp3]/g, " ")
     return newName
 }
+
+visibleHamburgerMenu();
+
+function visibleHamburgerMenu() {
+    let isMenuOn = false
+    document.querySelector(".js-hamburger")
+        .addEventListener('click', () => {
+            if(!isMenuOn) {
+                document.querySelector(".js-hamburger")
+                    .innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>'
+                let menu = document.querySelector(".hamburger-menu")
+                menu.style.display = "initial";
+                isMenuOn = true
+                let search = document.querySelector(".js-header")
+                search.style.opacity = 0;
+                subham.style.display = "block"
+
+            }
+            else {
+                document.querySelector(".js-hamburger")
+                    .innerHTML = ' <i class="fa fa-bars" aria-hidden="true"></i>'
+                let menu = document.querySelector(".hamburger-menu")
+                menu.style.display = "none";
+                isMenuOn = false
+                let search = document.querySelector(".js-header")
+                search.style.opacity = 1;
+                subham.style.display = "none"
+            }            
+       
+        })
+}   
