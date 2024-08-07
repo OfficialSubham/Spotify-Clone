@@ -28,34 +28,36 @@ async function getSongs() {
 async function main() {
     let song = await getSongs();
     console.log(song);
-    console.log(song[0]);
-    currentTrack.src = song[1]
+    currentTrack.src = song[0]
+    setInterval(() => {
+        console.log(currentTrack.currentTime);
+    }, 2000)
     let songName = songNameGiver(currentTrack.src)
-    // document.querySelector(".js-song-name")
-    //     .innerText = songName
-    // document.querySelector(".js-play-pause-button")
-    //     .addEventListener("click", () => {
-    //         if(currentTrack.paused) {
-    //             currentTrack.play();
-    //             document.querySelector(".js-play-pause-button")
-    //                 .classList.remove("fa-play")
-    //             document.querySelector(".js-play-pause-button")
-    //                 .classList.add("fa-pause")
-    //         }
-    //         else {
-    //             currentTrack.pause();
-    //             document.querySelector(".js-play-pause-button")
-    //                 .classList.remove("fa-pause")
-    //             document.querySelector(".js-play-pause-button")
-    //                 .classList.add("fa-play")
-    //         }
-    //     })
+    document.querySelector(".js-song-name")
+        .innerText = songName
+    document.querySelector(".js-play-pause-button")
+        .addEventListener("click", () => {
+            if(currentTrack.paused) {
+                currentTrack.play();
+                document.querySelector(".js-play-pause-button")
+                    .classList.remove("fa-play")
+                document.querySelector(".js-play-pause-button")
+                    .classList.add("fa-pause")
+            }
+            else {
+                currentTrack.pause();
+                document.querySelector(".js-play-pause-button")
+                    .classList.remove("fa-pause")
+                document.querySelector(".js-play-pause-button")
+                    .classList.add("fa-play")
+            }
+        })
 }
 
 function songNameGiver(song) {
     let name = song.split("/Songs%20Data/")[1]
     console.log(name);
-    let newName = name.replaceAll(/[%20, %2, (), _, .mp3]/g, " ")
+    let newName = name.replaceAll(/[%20, %2, (), _,]/g, " ")
     return newName
 }
 
