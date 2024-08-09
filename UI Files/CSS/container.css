@@ -408,6 +408,18 @@
     top: 10px;
     bottom: 0px;
     z-index: 2;
+    padding-top: 80px;
+    padding-left: 15px;
+    padding-right: 10px;
+    word-wrap: break-word;
+}
+
+.hamburger-menu ul li {
+    margin-bottom: 15px;
+}
+
+.hamburger-menu ul li:last-child {
+    margin-bottom: 0
 }
 
 .artist:hover, .each-card:hover {
@@ -462,8 +474,7 @@
     height: 1000px;
 }
 
-
-.album-container .player {
+.album-container .player, .container .player {
     height: 50px;
     background-color: rgba(0, 0, 0, 0.411);
     backdrop-filter: blur(10px);
@@ -480,6 +491,7 @@
     height: 70px;
     flex-shrink: 0;
     justify-content: space-between;
+    opacity: 1;
 }
 
 .player .seekbar {

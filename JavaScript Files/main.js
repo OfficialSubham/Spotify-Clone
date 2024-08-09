@@ -28,10 +28,19 @@ async function getSongs() {
 async function main() {
     let song = await getSongs();
     console.log(song);
+    let ul = document.createElement("ul")
+    let list = '';
+    song.forEach((song) => {
+        let eachSong = `<li data-song-id = ${song}>${songNameGiver(song)}</li>`
+        list += eachSong;
+    })
+    ul.innerHTML = list;
+    document.querySelector(".js-list")
+        .innerHTML = list
     currentTrack.src = song[3]
-    setInterval(() => {
-        console.log(currentTrack.currentTime);
-    }, 2000)
+    //setInterval(() => {
+        //console.log(currentTrack.currentTime);
+    //}, 2000)
     let songName = songNameGiver(currentTrack.src)
     document.querySelector(".js-song-name")
         .innerText = songName
@@ -91,3 +100,7 @@ function visibleHamburgerMenu() {
        
         })
 }   
+
+let ulList = document.querySelector(".js-list")
+
+console.log(ulList.innerHTML);
