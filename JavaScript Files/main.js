@@ -28,7 +28,7 @@ async function getSongs() {
 async function main() {
     let song = await getSongs();
     console.log(song);
-    currentTrack.src = song[0]
+    currentTrack.src = song[3]
     setInterval(() => {
         console.log(currentTrack.currentTime);
     }, 2000)
