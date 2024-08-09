@@ -545,3 +545,6 @@
     justify-content: flex-end;
     margin-bottom: 10px;
 }
+li {
+    cursor: pointer;
+}
