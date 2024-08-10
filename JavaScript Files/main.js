@@ -26,10 +26,11 @@ async function getSongs() {
 }
 
 async function main() {
-    let songName;
+    console.log("loading..");
     let track = new Audio()
+    track.preload = "metadata"
     track.src = "http://127.0.0.1:5500/Songs%20Data/ANIMAL%20Pehle%20Bhi%20Main.mp3";
-    songName = songNameGiver(track.src)
+   
     let song = await getSongs();
     let ul = document.createElement("div")
     let list = '';
@@ -42,30 +43,46 @@ async function main() {
     document.querySelector(".hamburger-menu")
         .innerHTML = list
 
-    document.querySelector(".js-hamburger-menu")
-        .addEventListener("click", (html)=> {
-            let div = html.explicitOriginalTarget;
-            song = div.dataset.songId
-            console.log(song);
-            track.src = song
+    songPlayer(track)
 
-            songName = songNameGiver(track.src)
-            document.querySelector(".js-song-name")
-                .innerText = songName
-                document.querySelector(".js-play-pause-button")
-                .classList.remove("fa-play")
-            document.querySelector(".js-play-pause-button")
-                .classList.add("fa-pause")
-                track.play();
-            console.log(track);
-
-            timeInterval = playPauseTimeInterval(track)
-            currentTrack = track;
-            justcheck(track)
-    })
     console.log(currentTrack);
     playPauseButton();
-    currentTrack = track;
+    songNameGiver(track.src)
+    console.log(track.duration);
+}
+
+function songPlayer(track) {
+    currentTrack = track
+    document.querySelector(".js-hamburger-menu")
+    .addEventListener("click",(html)=> {
+        let div = html.explicitOriginalTarget;
+        song = div.dataset.songId
+        console.log(song);
+        track.src =  song
+        setTimeout(() => {
+            songTime(currentTrack.duration)
+        }, 100)
+        songName = songNameGiver(track.src)
+        // document.querySelector(".js-song-name")
+        //     .innerText = songName
+            document.querySelector(".js-play-pause-button")
+            .classList.remove("fa-play")
+        document.querySelector(".js-play-pause-button")
+            .classList.add("fa-pause")
+            track.play();
+        console.log(track);
+
+        timeInterval = playPauseTimeInterval(track)
+        currentTrack = track;
+        durationChecker();
+})
+
+}
+
+async function durationChecker() {
+    setTimeout(() => {
+        console.log(currentTrack.duration);
+    }, 1000)
 }
 
 function playPauseButton () {
@@ -97,6 +114,8 @@ function playPauseButton () {
 function songNameGiver(song) {
     let name = song.split("/Songs%20Data/")[1]
     let newName = name.replaceAll(/[%20, %2, (), _,]/g, " ")
+    document.querySelector(".js-song-name")
+        .innerText = newName;
     return newName
 }
 
