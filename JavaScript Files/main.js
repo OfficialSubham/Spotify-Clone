@@ -2,7 +2,7 @@ console.log("hello");
 
 //JS started
 
-let currentTrack = new Audio()
+let currentTrack;
 
 main();
 
@@ -26,45 +26,72 @@ async function getSongs() {
 }
 
 async function main() {
+    let songName;
+    let track = new Audio()
+    track.src = "http://127.0.0.1:5500/Songs%20Data/ANIMAL%20Pehle%20Bhi%20Main.mp3";
+    songName = songNameGiver(track.src)
     let song = await getSongs();
-    let ul = document.createElement("ul")
+    let ul = document.createElement("div")
     let list = '';
     song.forEach((song) => {
         let className = removeLinkPart(song)
-        let eachSong = `<li data-song-id = ${song} class = "js-${className} js-song">${songNameGiver(song)}</li>`
+        let eachSong = `<div data-song-id = ${song} class = "js-${className} js-song">${songNameGiver(song)}</div>`
         list += eachSong;
     })
-    ul.innerHTML = list;
-    document.querySelector(".js-list")
+
+    document.querySelector(".hamburger-menu")
         .innerHTML = list
-    currentTrack.src = song[8]
+
+    document.querySelector(".js-hamburger-menu")
+        .addEventListener("click", (html)=> {
+            let div = html.explicitOriginalTarget;
+            song = div.dataset.songId
+            console.log(song);
+            track.src = song
+
+            songName = songNameGiver(track.src)
+            document.querySelector(".js-song-name")
+                .innerText = songName
+                document.querySelector(".js-play-pause-button")
+                .classList.remove("fa-play")
+            document.querySelector(".js-play-pause-button")
+                .classList.add("fa-pause")
+                track.play();
+            console.log(track);
+
+            timeInterval = playPauseTimeInterval(track)
+            currentTrack = track;
+            justcheck(track)
+    })
+    console.log(currentTrack);
+    playPauseButton();
+    currentTrack = track;
+}
+
+function playPauseButton () {
     let timeInterval;
-    let songName = songNameGiver(currentTrack.src)
-    document.querySelector(".js-song-name")
-        .innerText = songName
+
     document.querySelector(".js-play-pause-button")
-        .addEventListener("click", () => {
-            if(currentTrack.paused) {
-                document.querySelector(".js-play-pause-button")
-                    .classList.remove("fa-play")
-                document.querySelector(".js-play-pause-button")
-                    .classList.add("fa-pause")
-                    currentTrack.play();
-                songTime(currentTrack.duration)
-                 timeInterval = setInterval(() => {
-                    songTimer(currentTrack.currentTime);
-                }, 1000)
-            }
-            else {
-                currentTrack.pause();
-                document.querySelector(".js-play-pause-button")
-                    .classList.remove("fa-pause")
-                document.querySelector(".js-play-pause-button")
-                    .classList.add("fa-play")
-                songTime(currentTrack.duration)
-                clearInterval(timeInterval);
-            }
-        })
+    .addEventListener("click", () => {
+        if(currentTrack.paused) {
+            document.querySelector(".js-play-pause-button")
+                .classList.remove("fa-play")
+            document.querySelector(".js-play-pause-button")
+                .classList.add("fa-pause")
+                currentTrack.play();
+            songTime(currentTrack.duration)
+            timeInterval = playPauseTimeInterval(currentTrack)
+        }
+        else {
+            currentTrack.pause();
+            document.querySelector(".js-play-pause-button")
+                .classList.remove("fa-pause")
+            document.querySelector(".js-play-pause-button")
+                .classList.add("fa-play")
+            songTime(currentTrack.duration)
+            clearInterval(timeInterval);
+        }
+    })
 }
 
 function songNameGiver(song) {
@@ -104,7 +131,6 @@ function visibleHamburgerMenu() {
         })
 }   
 
-playSong();
 
 function removeLinkPart(fullLink) {
     let newLink = fullLink.split("/Songs%20Data/")[1];
@@ -113,28 +139,8 @@ function removeLinkPart(fullLink) {
     return newLink;
 }
 
-function playSong() {
-    let ulList = document.querySelector(".js-list")
-    let list = ulList.getElementsByTagName("li")
-    console.log(list);
-
-}
-
-document.querySelectorAll("ul")
-    .forEach((song) => {
-        console.log("hi");
-        document.querySelectorAll(".js-song")
-            .forEach(()=> {
-                console.log("hell nawh");
-            })
-        console.log(song);
-        song.addEventListener('click', () => {
-            console.log(song);
-        })
-});
-
 function songTime(currentSong) {
-    let time = currentSong
+    let time = Math.round(currentSong)
     let mainMinute = Math.floor(Number(time) / 60);
     let mainSecond = Math.floor(Number(time) % 60);
     let minute;
@@ -147,7 +153,6 @@ function songTime(currentSong) {
     }
     if(mainSecond < 10) {
         second = "0" + mainSecond;
-        console.log(second);
     }
     else {
         second = mainSecond
@@ -182,5 +187,31 @@ function songTimer(time) {
         .innerText = minute;
     document.querySelector(".js-second-timer")
         .innerText = second;
+}
 
+// playSong();
+
+// function playSong() {
+//     document.querySelector(".js-hamburger-menu")
+//         .addEventListener("click", (html)=> {
+//             let div = html.explicitOriginalTarget;
+//             song = div.dataset.songId
+//             console.log(song);
+//             currentTrack.src = song
+//             return song
+//         })
+
+// }
+
+function playPauseTimeInterval(currentTrack) {
+    let timeInterval = setInterval(() => {
+        songTimer(currentTrack.currentTime);
+    }, 1000)
+    return timeInterval;
+}
+
+
+
+function justcheck(track) {
+    console.log(track);
 }

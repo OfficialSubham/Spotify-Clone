@@ -414,11 +414,12 @@
     word-wrap: break-word;
 }
 
-.hamburger-menu ul li {
+.hamburger-menu div {
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
-.hamburger-menu ul li:last-child {
+.hamburger-menu div:last-child {
     margin-bottom: 0
 }
 
@@ -544,7 +545,4 @@
     align-items: center;
     justify-content: flex-end;
     margin-bottom: 10px;
-}
-li {
-    cursor: pointer;
 }
