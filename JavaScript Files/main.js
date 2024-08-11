@@ -47,7 +47,10 @@ async function main() {
 
     console.log(currentTrack);
     playPauseButton();
-    songNameGiver(track.src)
+    songNameGiver(track.src);
+    setTimeout(() => {
+        songTime(currentTrack.duration)
+    }, 100)
     console.log(track.duration);
 }
 
@@ -77,12 +80,6 @@ function songPlayer(track) {
         durationChecker();
 })
 
-}
-
-async function durationChecker() {
-    setTimeout(() => {
-        console.log(currentTrack.duration);
-    }, 1000)
 }
 
 function playPauseButton () {
@@ -206,6 +203,11 @@ function songTimer(time) {
         .innerText = minute;
     document.querySelector(".js-second-timer")
         .innerText = second;
+
+    let seeker = document.querySelector(".js-seeker");
+
+    seeker.style.left = ((time / currentTrack.duration) * 100) < 100 ? `${(time / currentTrack.duration) * 100}%` : "0%";
+
 }
 
 // playSong();
