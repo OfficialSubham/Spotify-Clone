@@ -6,9 +6,9 @@
     <title>Spotify Clone</title>
 
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="../CSS/navigation.css">
-    <link rel="stylesheet" href="../CSS/utility.css">
-    <link rel="stylesheet" href="../CSS/container.css">
+    <link rel="stylesheet" href="./UI Files/CSS/container.css">
+    <link rel="stylesheet" href="./UI Files/CSS/utility.css">
+    <link rel="stylesheet" href="./UI Files/CSS/navigation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 </head>
@@ -19,7 +19,7 @@
         <div class="left-contents flex column">
 
             <div class="home color">
-                <div class="header flex">
+                <!-- <div class="header flex">
                     <img src="../Images/full-logo-image.png" alt="" class="logo-image">
                 </div>
 
@@ -30,6 +30,10 @@
                 <div class="icon flex">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <span>Home</span>
+                </div> -->
+
+                <div class="desktop-song js-desktop-song">
+
                 </div>
             </div>
 
@@ -140,12 +144,15 @@
             <div id="subham">OfficialSubham</div>
 
             <div class="header flex space align-center js-header">
-                <div class="flex">
-                    <div class="back">
-                        <
+                <div class="flex volume-button">
+                    <div class="back js-decrease-volume">
+                        -
                     </div>
-                    <div class="back">
-                        >
+                    <div class="volume js-mute-button">
+                        <i class="fa-solid fa-volume-high"></i> 
+                    </div>
+                    <div class="back js-increase-volume">
+                        +
                     </div>
                 </div>
                 
@@ -173,8 +180,7 @@
                         </div>
 
                         <div>
-                            <a href="./artist.html
-                            " style="color: white; text-decoration: none;">Show all</a>
+                            <a href="./UI Files/HTML/artist.html" style="color: white; text-decoration: none;">Show all</a>
                         </div>
                     </div>
 
@@ -182,7 +188,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/pritam.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/pritam.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 Pritam
@@ -194,7 +200,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/arijit.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/arijit.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 Arijit Singh
@@ -206,7 +212,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/arahman.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/arahman.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 A.R. Rahman
@@ -218,7 +224,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/king.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/king.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 King
@@ -230,7 +236,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/anupam.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/anupam.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 Anupam Roy
@@ -242,7 +248,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/divine.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/divine.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 Divine
@@ -254,7 +260,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/bantai.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/bantai.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 Emiway
@@ -266,7 +272,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/shreyaG.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/shreyaG.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 Shreya Goshal
@@ -278,7 +284,7 @@
 
                         <div class="artist">
                             <div class="artist-picture">
-                                <img src="../Artist Images/eminem.png" alt="" class="artist-image">
+                                <img src="./UI Files/Artist Images/eminem.png" alt="" class="artist-image">
                             </div>
                             <div class="name">
                                 Eminem
@@ -300,8 +306,7 @@
                         </div>
 
                         <div>
-                            <a href="./albums.html
-                            " style="color: white; text-decoration: none;">Show all</a>
+                            <a href="./UI Files/HTML/albums.html" style="color: white; text-decoration: none;">Show all</a>
                         </div>
                     </div>
 
@@ -309,7 +314,7 @@
 
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/animal.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/animal.png" class = "album-image">
                             </div>
                             <div class="card-name">
                                 Animal
@@ -321,7 +326,7 @@
 
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/ashiqui.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/ashiqui.png" alt="" class="album-image">
                             </div>
                             <div class="card-name">
                                 Ashiqui 2
@@ -333,7 +338,7 @@
 
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/dewani.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/dewani.png" alt="" class="album-image">
                             </div>
                             <div class="card-name">
                                 Yeh Jawani Hai Dewani
@@ -345,7 +350,7 @@
 
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/hamari.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/hamari.png" alt="" class="album-image">
                             </div>
                             <div class="card-name">
                                 Hamari aadhuri kahani
@@ -357,7 +362,7 @@
 
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/jabwemet.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/jabwemet.png" alt="" class="album-image">
                             </div>
                             <div class="card-name">
                                 Jab We Met
@@ -369,7 +374,7 @@
 
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/kabir.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/kabir.png" alt="" class="album-image">
                             </div>
                             <div class="card-name">
                                 Kabir Singh
@@ -380,7 +385,7 @@
                         </div>
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/mahi.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/mahi.png" alt="" class="album-image">
                             </div>
                             <div class="card-name">
                                 Mr&Mrs Mahi
@@ -392,7 +397,7 @@
 
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/raja.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/raja.png" alt="" class="album-image">
                             </div>
                             <div class="card-name">
                                 Ek Tha Raja
@@ -404,7 +409,7 @@
 
                         <div class="each-card">
                             <div class="card-picture">
-                                <img src="../Album Image/sajni.png" alt="" class="album-image">
+                                <img src="./UI Files/Album Image/sajni.png" alt="" class="album-image">
                             </div>
                             <div class="card-name">
                                 Sajni from ("Laapaata Ladies")

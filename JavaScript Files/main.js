@@ -106,6 +106,9 @@ async function main() {
     document.querySelector(".hamburger-menu")
         .innerHTML = list
 
+    document.querySelector(".js-desktop-song")
+        .innerHTML = list
+
     songPlayer(track)
 
     console.log(currentTrack);
@@ -113,24 +116,48 @@ async function main() {
     songNameGiver(track.src);
     setTimeout(() => {
         songTime(currentTrack.duration)
-    }, 100)
+    }, 100);
+    currentTrack.volume = 0.2;
 }
 
 function songPlayer(track) {
     currentTrack = track
     document.querySelector(".js-hamburger-menu")
-    .addEventListener("click",(html)=> {
-        let div = html.explicitOriginalTarget;
-        song = div.dataset.songId
-        console.log(song);
-        track.src =  song
-        setTimeout(() => {
-            songTime(currentTrack.duration)
-        }, 100)
+        .addEventListener("click",(html)=> {
+            let div = html.explicitOriginalTarget;
+            song = div.dataset.songId
+            console.log(song);
+            track.src =  song
+            setTimeout(() => {
+                songTime(currentTrack.duration)
+            }, 100)
         songName = songNameGiver(track.src)
         // document.querySelector(".js-song-name")
         //     .innerText = songName
-            document.querySelector(".js-play-pause-button")
+        document.querySelector(".js-play-pause-button")
+            .classList.remove("fa-play")
+        document.querySelector(".js-play-pause-button")
+            .classList.add("fa-pause")
+            track.play();
+        console.log(track);
+
+        timeInterval = playPauseTimeInterval(track)
+        currentTrack = track;
+})
+
+document.querySelector(".js-desktop-song")
+        .addEventListener("click",(html)=> {
+            let div = html.explicitOriginalTarget;
+            song = div.dataset.songId
+            console.log(song);
+            track.src =  song
+            setTimeout(() => {
+                songTime(currentTrack.duration)
+            }, 100)
+        songName = songNameGiver(track.src)
+        // document.querySelector(".js-song-name")
+        //     .innerText = songName
+        document.querySelector(".js-play-pause-button")
             .classList.remove("fa-play")
         document.querySelector(".js-play-pause-button")
             .classList.add("fa-pause")
@@ -279,6 +306,7 @@ function songTimer(time) {
             .classList.remove("fa-pause")
         document.querySelector(".js-play-pause-button")
             .classList.add("fa-play")
+        document.querySelector(".js-next-song").click();
     }
 
 }
@@ -310,3 +338,43 @@ function changeButtonConfig() {
     document.querySelector(".js-play-pause-button")
         .classList.add("fa-pause")  
 }
+
+//Working On Volume Button
+
+document.querySelector(".js-increase-volume")
+    .addEventListener("click", () => {
+        if((currentTrack.volume + 0.2) < 1) {
+            currentTrack.volume += 0.2
+            document.querySelector(".js-mute-button")
+                .innerHTML = `<i class="fa-solid fa-volume-high"></i> `
+        }
+        else {
+            currentTrack.volume = 1;
+        }
+    })
+
+document.querySelector(".js-decrease-volume")
+    .addEventListener("click", () => {
+        if ((currentTrack.volume - 0.2) > 0) {
+            currentTrack.volume -= 0.2;
+        }
+        else {
+            currentTrack.volume = 0;
+            document.querySelector(".js-mute-button")
+                .innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`
+        }
+    })
+
+document.querySelector(".js-mute-button")
+    .addEventListener("click", () => {
+        if(currentTrack.volume == 0) {
+            currentTrack.volume = 0.2;
+            document.querySelector(".js-mute-button")
+                .innerHTML = `<i class="fa-solid fa-volume-high"></i> `
+        }
+        else if(currentTrack.volume > 0) {
+            currentTrack.volume = 0;
+            document.querySelector(".js-mute-button")
+                .innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`
+        }
+    })

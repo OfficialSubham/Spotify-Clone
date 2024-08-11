@@ -417,9 +417,9 @@
 
 .container .hamburger-menu, .album-container .hamburger-menu {
     width: 210px;
-    background-color: #23444b;
+    background-color: #0C1622;
     border-radius: 10px;
-    border: 2px solid #000;
+    border: 2px solid #fff;
     position: absolute;
     right: 10px;
     display: none;
@@ -430,11 +430,25 @@
     padding-left: 15px;
     padding-right: 10px;
     word-wrap: break-word;
+    overflow-y: scroll;
 }
+
+.container .hamburger-menu::-webkit-scrollbar, .album-container .hamburger-menu::-webkit-scrollbar {
+    display: none;
+}
+
 
 .hamburger-menu div {
     margin-bottom: 15px;
     cursor: pointer;
+    transition: all 0.15s;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.hamburger-menu div:hover {
+    background-color: #ffffff0f;
 }
 
 .hamburger-menu div:last-child {
@@ -570,4 +584,49 @@
     margin-bottom: 10px;
 }
 
+.header .volume-button {
+    width: 120px;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
 
+}
+
+.volume-button .volume {
+    cursor: pointer;
+}
+.volume-button .js-mute-button {
+    margin-right: 5px;
+}
+
+.left-contents .home {
+    overflow-y: scroll;
+}
+
+.home::-webkit-scrollbar {
+    display: none;
+}
+
+.left-contents .desktop-song {
+    height: auto;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.desktop-song div {
+    height: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding-left: 10px;
+    transition: all 0.15s;
+    cursor: pointer;
+}
+
+.desktop-song div:hover {
+    background-color: #ffffff0f;
+}
+
+.desktop-song div:last-child {
+    margin-bottom: 0;
+}
