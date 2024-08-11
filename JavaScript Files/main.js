@@ -32,6 +32,69 @@ async function main() {
     track.src = "http://127.0.0.1:5500/Songs%20Data/ANIMAL%20Pehle%20Bhi%20Main.mp3";
    
     let song = await getSongs();
+
+    document.querySelector(".js-next-song")
+        .addEventListener("click", () => {
+            let nextIndex;
+            song.forEach((song, index) => {
+                if (currentTrack.src == song) {
+                    nextIndex = index + 1;
+                }
+            })
+            if(nextIndex < song.length) {
+                track.src = song[nextIndex]
+                songNameGiver(track.src);
+                track.play()
+                setTimeout(() => {
+                    songTime(track.duration)
+                }, 100)
+                changeButtonConfig()
+                timeInterval = playPauseTimeInterval(track)
+            }
+            else {
+                track.src = song[0]
+                songNameGiver(track.src)
+                track.play()
+                setTimeout(() => {
+                    songTime(track.duration)
+                }, 100)
+                songTimer(track.currentTime)
+                changeButtonConfig()
+                timeInterval = playPauseTimeInterval(track)
+            }
+        })
+        document.querySelector(".js-previous-song")
+        .addEventListener("click", () => {
+            let previousIndex;
+            song.forEach((song, index) => {
+                if (currentTrack.src == song) {
+                    previousIndex = index - 1;
+                }
+            })
+            if(previousIndex >= 0) {
+                track.src = song[previousIndex]
+                songNameGiver(track.src);
+                track.play()
+                setTimeout(() => {
+                    songTime(track.duration)
+                }, 100)
+                changeButtonConfig()
+                timeInterval = playPauseTimeInterval(track)
+            }
+            else {
+                track.src = song[song.length - 1]
+                songNameGiver(track.src)
+                track.play()
+                setTimeout(() => {
+                    songTime(track.duration)
+                }, 100)
+                songTimer(track.currentTime)
+                changeButtonConfig()
+                timeInterval = playPauseTimeInterval(track)
+            }
+        })
+
+
     let ul = document.createElement("div")
     let list = '';
     song.forEach((song) => {
@@ -51,7 +114,6 @@ async function main() {
     setTimeout(() => {
         songTime(currentTrack.duration)
     }, 100)
-    console.log(track.duration);
 }
 
 function songPlayer(track) {
@@ -77,7 +139,6 @@ function songPlayer(track) {
 
         timeInterval = playPauseTimeInterval(track)
         currentTrack = track;
-        durationChecker();
 })
 
 }
@@ -156,7 +217,7 @@ function removeLinkPart(fullLink) {
 }
 
 function songTime(currentSong) {
-    let time = Math.round(currentSong)
+    let time = currentSong
     let mainMinute = Math.floor(Number(time) / 60);
     let mainSecond = Math.floor(Number(time) % 60);
     let minute;
@@ -206,7 +267,19 @@ function songTimer(time) {
 
     let seeker = document.querySelector(".js-seeker");
 
-    seeker.style.left = ((time / currentTrack.duration) * 100) < 100 ? `${(time / currentTrack.duration) * 100}%` : "0%";
+    if(((time / currentTrack.duration) * 100) <= 95) {
+        seeker.style.left = `${(time / currentTrack.duration) * 100}%`
+    }
+    else if (((time / currentTrack.duration) * 100) < 100 && ((time / currentTrack.duration) * 100) > 95) {
+        seeker.style.left = `96%`
+    }
+    else if (((time / currentTrack.duration) * 100) == 100) {
+        seeker.style.left = `0%`
+        document.querySelector(".js-play-pause-button")
+            .classList.remove("fa-pause")
+        document.querySelector(".js-play-pause-button")
+            .classList.add("fa-play")
+    }
 
 }
 
@@ -231,8 +304,9 @@ function playPauseTimeInterval(currentTrack) {
     return timeInterval;
 }
 
-
-
-function justcheck(track) {
-    console.log(track);
+function changeButtonConfig() {
+    document.querySelector(".js-play-pause-button")
+        .classList.remove("fa-play")
+    document.querySelector(".js-play-pause-button")
+        .classList.add("fa-pause")  
 }
