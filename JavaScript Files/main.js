@@ -378,3 +378,5 @@ document.querySelector(".js-mute-button")
                 .innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`
         }
     })
+
+    //Link problem solved
