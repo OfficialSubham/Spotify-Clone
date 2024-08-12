@@ -1,4 +1,4 @@
-console.log("hello");
+//console.log("hello");
 
 //JS started
 
@@ -7,52 +7,49 @@ let currentTrack;
 main();
 
 async function getSongs() {
-    let data = await fetch("http://127.0.0.1:5501/Songs%20Data")
+    let data = await fetch("https://officialsubham.github.io/my-music/Songs%20Data")
     let jsonData = await data.text();
     let div = document.createElement("div")
     div.innerHTML = jsonData;
     let a = div.getElementsByTagName("a")
     console.log(a);
     let songsArray = [];
-    for(let i = 0; i < a.length; i++) {
-        let song = a[i]
-        if(song.href.endsWith(".mp3")) {
-            songsArray.push(song.href)
-        }
+    for(let i = 0; i < jsonData.songs.length; i++) {
+        let song = jsonData.songs[i]
+        songsArray.push(song)
     }
     
+    //console.log(songsArray);
     return songsArray;
-
 }
 
 async function main() {
-    console.log("loading..");
+    //console.log("loading..");
     let track = new Audio()
     track.preload = "metadata"
     track.src = "https://officialsubham.github.io/my-music/Songs%20Data/ANIMAL%20Pehle%20Bhi%20Main.mp3";
    
     let song = await getSongs();
-
     document.querySelector(".js-next-song")
         .addEventListener("click", () => {
             let nextIndex;
             song.forEach((song, index) => {
-                if (currentTrack.src == song) {
+                if (currentTrack.src == song.link) {
                     nextIndex = index + 1;
                 }
             })
             if(nextIndex < song.length) {
-                track.src = song[nextIndex]
+                track.src = song[nextIndex].link
                 songNameGiver(track.src);
                 track.play()
                 setTimeout(() => {
                     songTime(track.duration)
-                }, 100)
+                }, 1000)
                 changeButtonConfig()
                 timeInterval = playPauseTimeInterval(track)
             }
             else {
-                track.src = song[0]
+                track.src = song[0].link
                 songNameGiver(track.src)
                 track.play()
                 setTimeout(() => {
@@ -67,12 +64,12 @@ async function main() {
         .addEventListener("click", () => {
             let previousIndex;
             song.forEach((song, index) => {
-                if (currentTrack.src == song) {
+                if (currentTrack.src == song.link) {
                     previousIndex = index - 1;
                 }
             })
             if(previousIndex >= 0) {
-                track.src = song[previousIndex]
+                track.src = song[previousIndex].link
                 songNameGiver(track.src);
                 track.play()
                 setTimeout(() => {
@@ -82,7 +79,7 @@ async function main() {
                 timeInterval = playPauseTimeInterval(track)
             }
             else {
-                track.src = song[song.length - 1]
+                track.src = song[song.length - 1].link
                 songNameGiver(track.src)
                 track.play()
                 setTimeout(() => {
@@ -98,8 +95,8 @@ async function main() {
     let ul = document.createElement("div")
     let list = '';
     song.forEach((song) => {
-        let className = removeLinkPart(song)
-        let eachSong = `<div data-song-id = ${song} class = "js-${className} js-song">${songNameGiver(song)}</div>`
+        let className = removeLinkPart(song.link)
+        let eachSong = `<div data-song-id = ${song.link} class = "js-${className} js-song">${songNameGiver(song.link)}</div>`
         list += eachSong;
     })
 
@@ -111,7 +108,7 @@ async function main() {
 
     songPlayer(track)
 
-    console.log(currentTrack);
+    //console.log(currentTrack);
     playPauseButton();
     songNameGiver(track.src);
     setTimeout(() => {
@@ -126,7 +123,7 @@ function songPlayer(track) {
         .addEventListener("click",(html)=> {
             let div = html.explicitOriginalTarget;
             song = div.dataset.songId
-            console.log(song);
+            //console.log(song);
             track.src =  song
             setTimeout(() => {
                 songTime(currentTrack.duration)
@@ -139,7 +136,7 @@ function songPlayer(track) {
         document.querySelector(".js-play-pause-button")
             .classList.add("fa-pause")
             track.play();
-        console.log(track);
+        //console.log(track);
 
         timeInterval = playPauseTimeInterval(track)
         currentTrack = track;
@@ -149,7 +146,7 @@ document.querySelector(".js-desktop-song")
         .addEventListener("click",(html)=> {
             let div = html.explicitOriginalTarget;
             song = div.dataset.songId
-            console.log(song);
+            //console.log(song);
             track.src =  song
             setTimeout(() => {
                 songTime(currentTrack.duration)
@@ -162,7 +159,7 @@ document.querySelector(".js-desktop-song")
         document.querySelector(".js-play-pause-button")
             .classList.add("fa-pause")
             track.play();
-        console.log(track);
+        //console.log(track);
 
         timeInterval = playPauseTimeInterval(track)
         currentTrack = track;
