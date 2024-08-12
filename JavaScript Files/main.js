@@ -10,8 +10,14 @@ async function getSongs() {
     let data = await fetch("https://officialsubham.github.io/my-music/Songs%20Data/songData.json")
     let jsonData = await data.json();
     let songsArray = [];
-    let song = jsonData.songs[i]
-    songsArray.push(song)
+    for (let i = 0; i < jsonData.songs.length; i++) {
+        let song = jsonData.songs[i]
+        songsArray.push(song)
+    }
+   //http://127.0.0.1:5501/JavaScript Files/main.js:18
+
+   //
+    //songsArray.push(song)
     //console.log(songsArray);
     return songsArray;
 }
