@@ -7,7 +7,7 @@ let currentTrack;
 main();
 
 async function getSongs() {
-    let data = await fetch("http://127.0.0.1:5501/my-music/Songs%20Data")
+    let data = await fetch("https://officialsubham.github.io/my-music/Songs%20Data")
     let jsonData = await data.text();
     let div = document.createElement("div")
     div.innerHTML = jsonData;
