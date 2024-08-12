@@ -7,18 +7,11 @@ let currentTrack;
 main();
 
 async function getSongs() {
-    let data = await fetch("https://officialsubham.github.io/my-music/Songs%20Data")
-    let jsonData = await data.text();
-    let div = document.createElement("div")
-    div.innerHTML = jsonData;
-    let a = div.getElementsByTagName("a")
-    console.log(a);
+    let data = await fetch("https://officialsubham.github.io/my-music/Songs%20Data/songData.json")
+    let jsonData = await data.json();
     let songsArray = [];
-    for(let i = 0; i < jsonData.songs.length; i++) {
-        let song = jsonData.songs[i]
-        songsArray.push(song)
-    }
-    
+    let song = jsonData.songs[i]
+    songsArray.push(song)
     //console.log(songsArray);
     return songsArray;
 }
