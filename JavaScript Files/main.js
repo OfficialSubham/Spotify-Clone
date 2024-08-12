@@ -7,7 +7,7 @@ let currentTrack;
 main();
 
 async function getSongs() {
-    let data = await fetch("http://127.0.0.1:5500/Songs%20Data")
+    let data = await fetch("http://127.0.0.1:5501/Songs%20Data")
     let jsonData = await data.text();
     let div = document.createElement("div")
     div.innerHTML = jsonData;
@@ -29,7 +29,7 @@ async function main() {
     console.log("loading..");
     let track = new Audio()
     track.preload = "metadata"
-    track.src = "http://127.0.0.1:5500/Songs%20Data/ANIMAL%20Pehle%20Bhi%20Main.mp3";
+    track.src = "http://127.0.0.1:5501/Songs%20Data/ANIMAL%20Pehle%20Bhi%20Main.mp3";
    
     let song = await getSongs();
 
